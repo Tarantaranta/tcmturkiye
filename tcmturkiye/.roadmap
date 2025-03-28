@@ -1,0 +1,55 @@
+# 🚀 Geliştirme Yol Haritası – TCMTürkiye
+
+Bu yol haritası, TCMTürkiye projesinin sürdürülebilir ve ölçeklenebilir bir yapıda gelişmesini sağlamak amacıyla adım adım yapılacakları belirtir. Her bir adım, teknik gelişim ve içerik üretimi ile doğrudan ilişkilidir.
+
+---
+
+## 1️⃣ Altyapı & Otomasyon Geliştirmeleri
+
+- [x] PubMed API’den XML veri çekme
+- [x] GPT-4 ile özet üretimi (TR+EN)
+- [x] GPT ile bilimsel yorum üretimi
+- [x] DALL·E 3 ile görsel entegrasyonu
+- [x] Markdown içerik dosyası üretimi
+- [x] index.html dosyasının otomatik güncellenmesi
+- [x] Localhost HTTP sunucu
+- [ ] Günlük zamanlayıcı sistemi (scheduler.py) → APScheduler
+- [ ] Github Actions entegrasyonu → Otomatik güncelleme
+- [ ] Web deploy: GitHub Pages / Vercel / Netlify
+
+---
+
+## 2️⃣ İçerik Geliştirme & Zenginleştirme
+
+- [ ] J-STAGE ve CiNii kaynakları için scraper yazımı
+- [ ] Evidence-Based CAM, Chinese Medicine (BMC) kaynaklarıyla içerik çeşitliliği artırılması
+- [ ] Klinik vaka içeriklerinin otomasyonu (Üniversite sitelerinden)
+- [ ] WHO/NCCIH PDF veri analizleri → Görsel destekli içerik üretimi
+- [ ] TCM klasik metinlerinden alıntılarla içerik derinliği oluşturma
+- [ ] Kategori ve etiketleme sisteminin otomatikleştirilmesi
+
+---
+
+## 3️⃣ Arayüz & Yayınlama Geliştirmeleri
+
+- [ ] Next.js veya Astro ile frontend modernleştirme
+- [ ] Çift dilli kullanıcı arayüzü (TR-EN toggle)
+- [ ] SEO uyumlu sayfa yapısı
+- [ ] Dinamik içerik sıralama (popüler içerikler öne çıkarılsın)
+- [ ] İçerik filtreleme: kategori, etiket, tarih, popülerlik
+- [ ] Mobil uyumlu responsive tasarım
+
+---
+
+## 4️⃣ Gelişmiş Özellikler & Uzun Vadeli Hedefler
+
+- [ ] Google Analytics veya Plausible entegrasyonu
+- [ ] En çok görüntülenen içerikleri listeleme
+- [ ] Kullanıcı geri bildirimi formu (isteğe bağlı içerik önerileri)
+- [ ] İçerik versiyonlama ve güncelleme sistemi
+- [ ] Open Graph ve sosyal medya paylaşım meta’ları
+- [ ] Admin panel (gelecekte içerik yönetimi için)
+
+---
+
+📌 Not: Her tamamlanan aşama, içerik üretim kalitesini artıracak ve sistemin daha profesyonel çalışmasını sağlayacaktır. Bu roadmap her sprint sonunda güncellenecektir.

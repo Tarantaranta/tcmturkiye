@@ -1,0 +1,9 @@
+# .gitignore
+__pycache__/
+*.pyc
+.venv/
+*.env
+.env
+*.log
+.pubmed_raw.xml
+output/
