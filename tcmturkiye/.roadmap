@@ -53,3 +53,344 @@ Bu yol haritası, TCMTürkiye projesinin sürdürülebilir ve ölçeklenebilir b
 ---
 
 📌 Not: Her tamamlanan aşama, içerik üretim kalitesini artıracak ve sistemin daha profesyonel çalışmasını sağlayacaktır. Bu roadmap her sprint sonunda güncellenecektir.
+
+
+
+# TCMTurkiye Projesi - Geliştirme Yol Haritası
+
+1. Otomatik Zamanlayıcı (scheduler.py)
+   - Günlük/saatlik cronjob ayarı yap
+   - Scheduler tetiklendiğinde:
+     1. PubMed'den XML al
+     2. Markdown üret
+     3. index.html güncelle
+     4. Gerekiyorsa e-posta bildirimi gönder
+
+2. Web Deploy
+   - GitHub Pages veya Netlify üzerinde statik hosting
+   - Her yeni push veya her güncelleme sonrası CI/CD entegrasyonu
+
+3. İki Dilli Arayüz
+   - Mevcut Markdown içeriğini TR/EN olarak gösteren basit bir toggle
+   - Next.js/React tabanlı frontend aşaması
+
+4. İçerik Analitiği
+   - Google Analytics veya Plausible entegrasyonu
+   - En çok tıklanan makale, popüler kategori takibi
+
+5. Genişleyebilir Scraper
+   - J-STAGE, CiNii gibi ek veri kaynaklarına tarayıcı yaz
+   - Verileri PubMed benzeri adımlarla işleyip sisteme ekle
+
+6. SEO İyileştirmeleri
+   - index.html veya Next.js’de meta etiketler, başlıklar, açıklama
+   - Paylaşım linkleri için Open Graph entegrasyonu
+
+7. Yedekleme & Güvenlik
+   - Markdown dosyalarının otomatik yedeği (Git repo veya bulut)
+   - API anahtarlarının güvenli saklanması (dotenv)
+
+8. Yol Haritasının Güncellenmesi
+   - Yeni özellikler ve bug fix’ler için düzenli güncelleme
+   - Topluluk geri bildirimi ile iyileştirmeler
+
+
+   Kapsamlı yol haritası: 
+
+
+⸻
+
+1. Arayüz ve Kullanıcı Deneyimi (UI/UX) Planlama
+	1.	Hedef Kitle Analizi
+	•	Hedef: Akupunktur uzmanları, TCM araştırmacıları, öğrenciler ve meraklılar.
+	•	İhtiyaçlar: Makale, vaka sunumu, teorik içerik, etkinlik duyuruları vb.
+	•	Farklı roller ve kullanım senaryoları:
+	•	Uzman Doktor: Son araştırmaları okumak, kendi vaka sunumunu paylaşmak.
+	•	Öğrenci/Araştırmacı: Literatür taraması yapmak, temel teorik bilgilere ulaşmak.
+	•	Halka Açık Kullanıcı: Kendi merak ettiği hastalıklar ve akupunktur ilişkisi.
+	2.	Sade ve Modern Taslak Oluşturma
+	•	Örnek: Airbnb, Medium, Notion gibi temiz, sade, “boşluk” kullanımı zengin, net tipografili.
+	•	Mobile-first yaklaşım: Hem mobil hem masaüstü cihazlarda mükemmel görünüm.
+	•	Renk paleti: Genellikle doğayı çağrıştıran tonlar (yeşil, beyaz, pastel renkler), TCM’ye özgü vurgu renkleri (örneğin kırmızı accent) veya minimal bir tema.
+	•	Logo ve marka kimliği tasarımı (varsa).
+	•	Kolay anlaşılır menüler:
+	•	Anasayfa: Yeni eklenen makaleler, popüler konular.
+	•	Kategoriler: Bilimsel Araştırmalar, Mekanizma & Teori, Hastalık Bazlı, vb.
+	•	Etkinlikler (Konferans duyuruları, seminerler).
+	•	İletişim & Hakkında.
+	3.	Wireframe & Mockup Çalışmaları
+	•	Figma, Sketch, Adobe XD gibi araçlarla kabataslak tasarımlar.
+	•	Prototipleme: Düğmeler, arama çubuğu, kategori navigasyonu, makale sayfası.
+	4.	Kullanıcı Testleri (UI/UX)
+	•	Birkaç kullanıcı (akupunktur uzmanı, öğrenci) ile taslağı test edip geri bildirim toplama.
+	•	İyileştirme ve yeni sürüm prototip hazırlama.
+
+⸻
+
+2. Frontend Seçimi ve Geliştirme
+	1.	Statik Site vs. Dinamik Site Kararı
+	•	İlk aşamada: Statik site jeneratörleri (Astro, Next.js SSG modu) + Markdown temelli içerik.
+	•	İleride: Veritabanına dayalı, gerçek zamanlı dinamik içerik (Next.js Full, Django, vb.).
+	2.	Modern Framework (Öneri: Next.js veya Astro)
+	•	Next.js avantajları: React ekosistemi, SEO dostu, server-side rendering ve static generation beraber.
+	•	Astro avantajları: Hafif, hızlı, blog ve dokümantasyon sitelerinde popüler.
+	3.	Tasarımın Kodlanması
+	•	UI component’larını React veya Astro component’ları şeklinde modüler tasarlama.
+	•	Menüler, anasayfa layout, makale sayfası tasarımı.
+	•	Responsive CSS (Tailwind CSS, Chakra UI, ya da sade CSS/SCSS).
+	4.	Uluslararasılaştırma (i18n)
+	•	Türkçe / İngilizce toggle.
+	•	Next.js içinde next-i18next veya Astro’nun i18n plugini.
+	•	İçerik diline göre URL yönlendirme (örnek: /en/... ve /tr/...).
+	5.	Arama ve Filtreleme Özellikleri
+	•	Ön tarafta tüm makalelerde metin tabanlı arama (algolia, lunr.js vb. eklenebilir).
+	•	Kategorilere, etiketlere göre hızlı filtreleme.
+	6.	Prototip Yayınlama (Ücretsiz Hosting)
+	•	Netlify veya Vercel gibi platformlarda ücretsiz başlangıç.
+	•	Domain aşaması: Proje geliştikçe kendi domain’inizi (örnek: tcmturkiye.org) bu servise yönlendirme.
+
+⸻
+
+3. Backend & Otomasyon
+	1.	Mevcut Otomasyon Akışı Stabilize Etme
+	•	PubMed makalelerini çekme + GPT özet + GPT yorum + DALL·E görsel + Markdown oluşturma.
+	•	Her adımın hata yakalama (exception handling) mekanizması.
+	•	Kayıt tutma (logging).
+	2.	Scheduler (Günlük/Saatlik Otomatik Koşma)
+	•	Python APScheduler veya GitHub Actions.
+	•	Belirli saatlerde tcmturkiye.py scriptini otomatik tetikleme.
+	•	Log + Bildirim: Başarılı/başarısız çalışmaları e-posta veya Slack vb. kanalına bildirme.
+	3.	Ek Veri Kaynakları
+	•	J-STAGE, CNKI (Çin kaynakları), CiNii (Japon üniversite yayınları) vb.
+	•	Scraper veya API yaklaşımı (Çince/Japonca dilleri için GPT-based çeviri & özet entegrasyonu).
+	4.	Veritabanı Kararı (İlerisi İçin)
+	•	NoSQL (MongoDB) veya SQL (PostgreSQL).
+	•	Makale, yazar, kategori vb. tablolar veya koleksiyonlar.
+	•	Markdown dosyaları + veritabanına minimal metadata kaydı (başlık, tarih, kategori, url).
+	5.	API Geliştirme (Opsiyonel)
+	•	İçeriğin .md formatı yerine JSON formatta sunulması.
+	•	Başka bir frontend, mobil uygulama ya da 3. taraf entegrasyonlar bu API’yi kullanabilir.
+
+⸻
+
+4. İçerik Yönetimi & Genişleme
+	1.	Yazar Paneli (Uzmanların Vaka Girebilmesi)
+	•	Kayıt/giriş sistemi.
+	•	Makale veya vaka sunumu ekleyebilme (başlık, özet, body text).
+	•	Otomatik GPT düzeltme/özet oluşturma, ardından inceleme.
+	2.	Onay Süreci (Moderasyon)
+	•	Spam veya yanlış bilginin önlenmesi için editör onayı.
+	•	Sisteme girilen vaka sunumları ya da makaleler önce “Taslak” durumunda olmalı, sonra “Yayın” durumu.
+	3.	Kullanıcı Profilleri & Topluluk Özellikleri
+	•	Profiller: Ad, soyad, uzmanlık alanı, linkler.
+	•	Kullanıcılar arası etkileşim: Yorumlar, beğeniler, soru-cevap (future feature).
+	•	Topluluk büyüdükçe forum veya Q&A bölümü.
+	4.	Çift Dilli veya Çok Dilli İçerik İyileştirme
+	•	Tüm vaka ve makalelerin İngilizce/Türkçe eş zamanlı oluşturulması.
+	•	Çince/Japonca istenirse GPT ile çeviri + TR/EN özet.
+	•	Yazım kontrolü, tıbbi terminoloji hassasiyeti (özellikle yasal açıdan).
+	5.	Kaliteli Görsel İçerik
+	•	DALL·E ile üretilen görsellerin incelenmesi, gerekirse manuel düzenleme.
+	•	Görsellerin boyut ve format optimizasyonu (ör. webp).
+	•	Telif & lisanslama konularına dikkat etmek (özellikle orijinal makale tabloları/grafikleri).
+
+⸻
+
+5. SEO ve Performans
+	1.	Temel SEO Adımları
+	•	Site başlığı, meta açıklama, Open Graph (sosyal medya kartları) verileri.
+	•	Yapılandırılmış veri (schema.org - “Article”, “MedicalStudy” vb. mikroformatlar).
+	•	Robots.txt, Sitemap.xml otomatik oluşturma.
+	2.	Performans Optimizasyonu
+	•	Statik sayfa üretimi, CDN kullanımı (Netlify, Vercel, Cloudflare).
+	•	Görsel optimizasyonu (lazy loading).
+	•	Lighthouse testleri (Google’dan yüksek performans skoru).
+	3.	Analitik ve Izleme
+	•	Google Analytics veya Plausible entegrasyonu.
+	•	Ziyaretçi sayısı, hangi makale popüler, hangi kategori daha çok okunuyor.
+	•	Kullanıcı davranış analizi (bounce rate, okuma süresi vb.).
+
+⸻
+
+6. İleri Düzey Özellikler
+	1.	Makine Öğrenmesi / NLP Entegrasyonları
+	•	Kullanıcıların ilgi alanına göre makale/vaka önerisi (recommendation system).
+	•	Metin sınıflandırma (örneğin, “Migren”, “Bel ağrısı”, “İnfertilite” makaleleri otomatik etiketlensin).
+	•	GPT ile “Kısa soru-cevap asistanı” (basit chatbot) eklenmesi.
+	2.	Vaka Veri Analizi & Veri Görselleştirme
+	•	Kendi vaka raporları datasını tablolar, grafikler şeklinde sunma.
+	•	“% kaçında başarı sağlandı”, “Hangi protokol uygulandı” vb. istatistikler.
+	•	Konunun etik boyutu: Hasta bilgileri (kimlik vb.) gizli kalmalı.
+	3.	Uluslararası Çapta İşbirlikleri
+	•	WFAS (World Federation of Acupuncture Societies) gibi kurumlarla iletişime geçme.
+	•	Dünyanın farklı yerlerindeki akupunktur uzmanlarından vaka raporları toplama.
+	4.	Etkinlik Yönetimi ve Kayıt Sistemi
+	•	Konferanslar, seminerler, webinarlara katılım kaydı.
+	•	Kullanıcılar etkinliklere kayıt olup bilet alabilir (event system).
+	5.	Ücretli/Ücretsiz Dersler veya Üyelik Modelleri (Uzun Vadeli)
+	•	Video dersler, canlı seminerler.
+	•	Premium üyelik: Geniş veri tabanına erişim, özel vaka sunum arşivleri, vb.
+
+⸻
+
+7. Yayınlama ve Yükseltme Aşaması
+	1.	Ücretsiz Hosting Başlangıcı
+	•	Netlify / Vercel / GitHub Pages (özellikle statik site için).
+	•	Projenin büyümesi ile sunucu kaynakları yetmezse VPS veya bulut sağlayıcıya geçiş.
+	2.	Özel Alan Adı Kullanımı
+	•	Alan adı satın alma (tcmturkiye.org, tcmturkiye.com, vb.).
+	•	DNS yönlendirme, SSL sertifikası (Let’s Encrypt, Cloudflare).
+	•	Vercel/Netlify üzerinde özel domain ayarı.
+	3.	Sürekli Entegrasyon ve Dağıtım (CI/CD)
+	•	GitHub Actions veya GitLab CI ile her “git push” sonrasında otomatik test + build + deploy.
+	•	Otomasyon süreçlerini de (örn. makale güncelleme) GitHub Actions ile birleştirme.
+	4.	Ölçeklendirme
+	•	Kullanıcı sayısı ve içerik arttıkça veri tabanı ve sunucu yükünü izleme.
+	•	Kaldıramayacak duruma gelirseniz Docker/Kubernetes gibi container çözümler.
+	•	Global CDN kullanma (Cloudflare, AWS CloudFront) ile hızlandırma.
+
+⸻
+
+8. Güvenlik ve Yasal Konular
+	1.	Kullanıcı Verileri ve Gizlilik
+	•	Üyelik, e-posta toplama, çerez politikası.
+	•	KVKK (Türkiye) ve GDPR (Avrupa) uyumluluğu.
+	•	Hasta verisi paylaşırken kimlik gizleme (anonimleştirme).
+	2.	İçerik Kuralları ve Telif Hakları
+	•	Yayınlanan makalelerin kullanım lisansı: Creative Commons vs. PubMed telif durumları.
+	•	GPT ile üretilen metinlerin “orijinal makale”ye atıf yapması, intihal problemlerine karşı önlem.
+	•	DALL·E ile görsel üretim lisansı, ticari kullanım hakları.
+	3.	Spam ve Kalite Kontrol
+	•	Kullanıcı tarafından eklenen içeriği taramak (kötü niyetli, alakasız içerik).
+	•	Bir moderasyon ekibi veya otomatik GPT moderasyon.
+
+⸻
+
+9. Proje Yönetimi ve İlerleme Takibi
+	1.	Proje Yönetim Aracı
+	•	Trello, Jira veya GitHub Projects ile görevleri takip etmek.
+	•	Aşamaları Kanban veya Scrum yöntemleriyle yönetmek.
+	2.	Sürüm Yönetimi
+	•	Projenin belirli aşamalarına “v1.0.0”, “v2.0.0” gibi sürümler belirlemek.
+	•	“Changelog” tutarak nelerin değiştiğini kaydetmek.
+	3.	Düzenli Geri Bildirim ve Beta Test
+	•	Belli bir kitleye (doktorlar, öğrenciler) beta sürüm linkini paylaşma.
+	•	Aldığınız geri bildirimlerle düzenli sprint planlama.
+
+⸻
+
+10. Uzun Vadeli Vizyon
+	1.	Tam Otomasyonlu Bilgi Ekosistemi
+	•	PubMed, J-STAGE, CNKI, konferans özetleri vb. sürekli taranacak.
+	•	GPT ile “zengin içerik” üretilecek.
+	•	Yeni veritabanı kayıtları otomatik eklenecek.
+	•	Kullanıcılar da kendi araştırmalarını ekleyip paylaşabilecek (topluluk katkısı).
+	2.	Sağlam Topluluk Oluşturma
+	•	Forum, soru-cevap platformu (Stack Overflow tarzı).
+	•	Webinarlar, online dersler.
+	•	Gerçek dünyadaki etkinliklerin (kongre, sempozyum) duyuruları + kayıt alma.
+	3.	Akademik Ortamla İş Birliği
+	•	Üniversiteler, dernekler (WFAS, AACMA, vs.) resmi partnerlik.
+	•	Ortak bilimsel projeler, multicenter araştırma veri paylaşımı.
+	•	Belki de hakemli e-dergi gibi bir platformun temeli.
+	4.	Ticari İmkânlar (Opsiyonel)
+	•	Kurslar, sertifikalar.
+	•	Sponsorlu içerik (markalarla anlaşmalı, ancak etik çerçeve içinde).
+	•	Ücretli üyelik modelleri (premium makaleler, vaka analizleri, data raporları).
+
+⸻
+
+Sonuç ve Özet
+
+Bu yol haritası, başlangıçtaki “Markdown temelli otomasyon” yapısından, modern bir tam kapsamlı “kendi kendine güncellenen bilimsel platform”a doğru uzanan tüm adımları içeriyor. Gördüğünüz gibi, her aşamada hem teknik ayrıntılar hem de deneyimsel iyileştirmeler (UI/UX, topluluk yönetimi, SEO, güvenlik, vb.) düşünülmeli.
+	1.	UI/UX tasarımı → 2. Frontend Framework → 3. Otomasyon Stabilizasyonu → 4. Veri Tabanı & API → 5. Kullanıcı Erişimi ve Moderasyon → 6. SEO/Performans → 7. Sürekli Entegrasyon ve Dağıtım → 8. Genişleme ve İş Birlikleri → 9. Topluluk & Vaka Yönetimi → 10. Uzun Vadeli Vizyon.
+
+
+
+    Numaralı Görev Listesi: 
+
+    1. Kısa Vadeli Geliştirmeler (1-3 Ay)
+	1.	Otomasyon Akışının Stabilizasyonu
+1.1. Hata loglama ve bildirim mekanizması ekleyin
+1.2. Scheduler entegrasyonu yapın (APScheduler veya GitHub Actions kullanarak)
+1.3. Her modülde kapsamlı exception handling (hata yönetimi) uygulayın
+	2.	Temel Frontend Prototipinin Oluşturulması
+2.1. Mevcut Markdown içerikleri temel alan statik site taslağı oluşturun (Next.js veya Astro tercih edilebilir)
+2.2. Responsive (mobil ve masaüstü uyumlu) tasarım uygulayın
+2.3. Dil toggle (i18n) mekanizmasını entegre ederek Türkçe/İngilizce içerik sunumunu başlatın
+	3.	Sürekli Entegrasyon ve Dağıtım (CI/CD)
+3.1. GitHub Actions veya benzeri araçlar kullanarak otomatik test, build ve deploy süreçlerini yapılandırın
+3.2. Kod güncellemelerinin otomatik olarak canlıya aktarılmasını sağlayın
+
+⸻
+
+2. Orta Vadeli Geliştirmeler (3-6 Ay)
+	4.	Gelişmiş Frontend ve UI/UX İyileştirmeleri
+4.1. Detaylı wireframe ve mockup çalışmalarını başlatın (Figma, Adobe XD gibi araçlarla)
+4.2. İlk prototipi belirli kullanıcı gruplarıyla test edip geri bildirim toplayın
+4.3. Modern, çekici ve kullanıcı dostu menü, navigasyon ve arama bileşenlerini oluşturun
+	5.	İçerik Yönetimi ve Moderasyon Sistemi
+5.1. Akupunktur uzmanlarının vaka sunumlarını ekleyebileceği basit bir yazar paneli/CMS geliştirin
+5.2. İçeriklerin yayınlanmadan önce moderasyon ve onay sürecini oluşturun
+	6.	SEO ve Performans Optimizasyonu
+6.1. Meta etiketler, Open Graph, robots.txt ve sitemap.xml gibi temel SEO gereksinimlerini ekleyin
+6.2. Görseller için lazy loading ve sıkıştırma yöntemleriyle sayfa performansını artırın
+
+⸻
+
+3. Uzun Vadeli Geliştirmeler (6 Ay ve Sonrası)
+	7.	Dinamik İçerik ve Veritabanı Entegrasyonu
+7.1. Markdown dosyalarının yanı sıra, makale ve vaka sunumlarını saklamak için MongoDB veya PostgreSQL gibi bir veritabanına geçiş yapın
+7.2. İçerikleri JSON formatında sunan RESTful API’ler geliştirin
+	8.	İleri Düzey NLP ve Makine Öğrenmesi Entegrasyonu
+8.1. Kullanıcı ilgi alanına göre makale ve vaka öneri sistemi geliştirin
+8.2. Otomatik etiketleme ve kategorilendirme için GPT tabanlı metin sınıflandırma ekleyin
+	9.	Topluluk ve İşbirliği Modülleri
+9.1. Kullanıcı profilleri, sosyal etkileşim (yorumlar, beğeniler) ve forum gibi topluluk özellikleri oluşturun
+9.2. Online eğitim, webinar ve canlı seminer entegrasyonunu planlayın
+	10.	Özel Domain ve Profesyonel Hosting
+10.1. Alan adı satın alıp DNS yapılandırması ve SSL sertifikası (Let’s Encrypt veya Cloudflare) entegrasyonunu gerçekleştirin
+10.2. Global CDN entegrasyonu ile site performansını artırın
+10.3. Ölçeklenebilir sunucu çözümleri için VPS veya bulut hizmetlerine geçiş planı hazırlayın
+	11.	CI/CD Süreçlerinin Genişletilmesi ve Ölçeklendirme
+11.1. Docker ve Kubernetes gibi container çözümlerine geçiş yaparak ortamı ölçeklendirin
+11.2. Otomatik güncelleme ve dağıtım süreçlerini daha kapsamlı hale getirin
+
+⸻
+
+4. Güvenlik ve Yasal Konular
+	12.	Kullanıcı Verileri ve Gizlilik Politikaları
+12.1. Üyelik ve e-posta toplama süreçlerinde KVKK/GDPR uyumunu sağlamak
+12.2. Çerez politikası ve gizlilik bildirimi oluşturun
+	13.	İçerik Kuralları ve Telif Hakları
+13.1. Yayınlanan makaleler ve vaka sunumları için kullanım lisansları belirleyin
+13.2. GPT ve DALL·E üretilen içeriklerde atıf ve telif kurallarını netleştirin
+	14.	Spam ve Kalite Kontrol Mekanizmaları
+14.1. Kullanıcı tarafından eklenen içeriklerin otomatik moderasyonunu sağlayın
+14.2. Kalite kontrol süreçlerini manuel/otomatik yöntemlerle uygulayın
+
+⸻
+
+5. Proje Yönetimi ve İlerleme Takibi
+	15.	Proje Yönetim Araçları Kullanımı
+15.1. Trello, Jira veya GitHub Projects ile görevleri takip etmeye başlayın
+15.2. Her aşamanın ilerlemesini düzenli olarak güncelleyin
+	16.	Sürüm Yönetimi ve Changelog
+16.1. Projenin sürümlerini (v1.0.0, v2.0.0, vb.) belirleyin
+16.2. Yapılan değişiklikleri ve iyileştirmeleri detaylı olarak belgeleyin
+	17.	Beta Test ve Geri Bildirim Süreçleri
+17.1. Prototipi belirli bir kullanıcı grubuna sunarak beta test yapın
+17.2. Geri bildirimlere göre sprint planları oluşturun ve iyileştirmeler yapın
+
+⸻
+
+6. Uzun Vadeli Vizyon ve Topluluk Oluşturma
+	18.	Tam Otomasyonlu Bilgi Ekosistemi
+18.1. PubMed, J-STAGE, CNKI ve diğer kaynaklardan sürekli içerik çekme mekanizmasını güçlendirin
+18.2. Otomatik içerik güncelleme ve veri tabanı entegrasyonunu tamamlayın
+	19.	Akademik İş Birlikleri ve Topluluk Yönetimi
+19.1. Üniversiteler, dernekler (WFAS, AACMA vb.) ve sektör liderleriyle resmi iş birlikleri başlatın
+19.2. Online ve fiziksel etkinlikler (kongre, sempozyum) için platform entegrasyonları oluşturun
+	20.	Ticari İmkânlar ve Premium Hizmetler
+20.1. Ücretli üyelik modelleri, online kurslar ve sertifika programları planlayın
+20.2. Sponsorlu içerik anlaşmaları ve reklam iş birlikleri geliştirin

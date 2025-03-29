@@ -8,19 +8,32 @@ import schedule
 import time
 import subprocess
 from datetime import datetime
+import logging
+
+# Loglama konfigürasyonu: scheduler.log dosyasına yazacak şekilde ayarlanmıştır.
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s: %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S',
+    filename='scheduler.log',
+    filemode='a'
+)
 
 def job():
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"[{timestamp}] İçerik üretimi başlatılıyor...")
-    with open("scheduler.log", "a") as log_file:
-        log_file.write(f"[{timestamp}] İçerik üretimi başlatılıyor...\n")
-    subprocess.run(["python3", "-m", "tcmturkiye.tcmturkiye"])
+    logging.info("İçerik üretimi başlatılıyor...")
+    try:
+        subprocess.run(["python3", "-m", "tcmturkiye.tcmturkiye"], check=True)
+    except Exception as e:
+        logging.exception("İçerik üretimi sırasında hata oluştu:")
 
-def start_scheduler(run_time="09:00"):
+def start_scheduler(run_time="16:10"):
     # Belirtilen saatte günlük çalıştır
     schedule.every().day.at(run_time).do(job)
 
-    print(f"Zamanlayıcı başlatıldı. Her gün {run_time} saatinde çalışacak.")
+    logging.info(f"Zamanlayıcı başlatıldı. Her gün {run_time} saatinde çalışacak.")
     while True:
         schedule.run_pending()
         time.sleep(60)
+
+if __name__ == "__main__":
+    job()        
