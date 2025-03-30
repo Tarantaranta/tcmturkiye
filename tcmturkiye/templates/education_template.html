@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Eğitimler | ACUSNAP</title>
+  <meta name="description" content="ACUSNAP eğitimler sayfası - Geleneksel Çin tıbbı ve akupunktur ile ilgili kurslar, sertifika programları ve eğitimler">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
+    
+    .card { height: 100%; }
+    .feature-card { min-height: 200px; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      background-color: #FFFFFF;
+      color: #2C3E50;
+    }
+    
+    /* Ana renk paleti */
+    :root {
+      --primary: #3A7CA5; /* Ana mavi renk */
+      --primary-light: #D4E6F1; /* Açık mavi */
+      --primary-dark: #2471A3; /* Koyu mavi */
+      --accent: #F9A26C; /* Pastel turuncu kontrast renk */
+      --accent-light: #FFDBC2; /* Açık pastel turuncu */
+      --neutral-light: #F8F9FA; /* Açık nötr */
+      --neutral-medium: #E9ECEF; /* Orta nötr */
+      --neutral-dark: #5D6D7E; /* Koyu nötr */
+      --text-primary: #2C3E50; /* Ana metin rengi */
+      --text-secondary: #7F8C8D; /* İkincil metin rengi */
+    }
+
+    header {
+      background-color: var(--neutral-light);
+      color: var(--text-primary);
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      height: 70px;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-bottom: 1px solid var(--neutral-medium);
+    }
+    .header-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+    .brand-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      color: var(--primary); /* Ana mavi renk */
+      margin-bottom: 0.2rem;
+    }
+    .brand-slogan {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      letter-spacing: 0.5px;
+    }
+    .topnav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 1;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .topnav a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: transform 0.3s ease;
+    }
+    .topnav a i {
+      font-size: 1rem;
+    }
+    .topnav a:hover i {
+      transform: scale(1.2);
+    }
+    .layout {
+      display: flex;
+      flex: 1;
+    }
+    aside {
+      width: 280px;
+      background: var(--neutral-light);
+      padding: 1.5rem;
+      border-right: 1px solid var(--neutral-medium);
+      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    }
+    main {
+      flex: 1;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+    footer {
+      background: var(--neutral-light);
+      padding: 1rem 2rem;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      border-top: 1px solid var(--neutral-medium);
+    }
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+    }
+    .footer-section a {
+      display: inline-block;
+      margin: 0 0.5rem;
+      font-size: 1.3rem;
+    }
+    .footer-section h4 {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .footer-section a {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: #333;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .footer-section a:hover {
+      color: #c62828;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+    }
+    nav a {
+      display: block;
+      margin-bottom: 1rem;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #c62828;
+    }
+    .lang-toggle {
+      background: white;
+      color: #c62828;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .education-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: 0.2s ease;
+      margin-bottom: 1.5rem;
+    }
+    .education-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    .education-title {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .education-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    .education-description {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .education-duration {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    .education-level {
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      margin-right: 0.5rem;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 0.8rem;
+      white-space: nowrap;
+    }
+    .social-icon {
+      margin-right: 0.5rem;
+      color: #333;
+      transition: color 0.3s ease;
+      display: inline-block;
+    }
+    .social-icon:hover {
+      color: #c62828;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="topnav">
+      <a href="/" title="Anasayfa" style="margin-right: auto;"><i class="bi bi-house-door-fill"></i></a>
+    </nav>
+    <div class="header-center">
+      <div class="brand-logo">ACUSNAP</div>
+      <div class="brand-slogan">Geleneksel Tıbbın Modern Yüzü</div>
+    </div>
+    <div class="nav-actions">
+      <button class="lang-toggle" onclick="toggleLang()" style="color: var(--text-primary);"><i class="fas fa-language"></i></button>
+      <div class="profile-icon d-none" id="profile-icon">
+        <i class="fas fa-user-circle fa-lg" style="color: var(--text-primary);"></i>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <section class="mb-4">
+        <div id="side-login-section">
+          <div id="side-login-options">
+            <h5 class="mb-4" style="font-weight: 600; color: var(--text-primary); font-size: 1.1rem;">Giriş Yap</h5>
+            
+            <div class="d-grid gap-2 mb-3">
+              <button id="side-login-button" onclick="loginWithGoogle()" class="btn w-100" style="background-color: white; border: 1px solid var(--neutral-medium); border-radius: 8px; padding: 10px; transition: all 0.2s; color: var(--text-primary); font-weight: 500;">
+                <i class="fab fa-google me-2" style="color: #4285F4;"></i><span style="color: #DB4437;">G</span><span style="color: #4285F4;">o</span><span style="color: #F4B400;">o</span><span style="color: #4285F4;">g</span><span style="color: #0F9D58;">l</span><span style="color: #DB4437;">e</span> ile devam et
+              </button>
+            </div>
+            
+            <div class="text-center mb-3">
+              <div style="display: flex; align-items: center; margin: 15px 0;">
+                <div style="flex-grow: 1; height: 1px; background-color: var(--neutral-medium);"></div>
+                <div style="margin: 0 10px; color: var(--text-secondary); font-size: 0.8rem;">veya</div>
+                <div style="flex-grow: 1; height: 1px; background-color: var(--neutral-medium);"></div>
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <div class="mb-3">
+                <input type="email" id="email-input" class="form-control" placeholder="E-posta" style="border-radius: 8px; padding: 10px; border: 1px solid var(--neutral-medium); background-color: white;">
+              </div>
+              <div class="mb-3">
+                <input type="password" id="password-input" class="form-control" placeholder="Şifre" style="border-radius: 8px; padding: 10px; border: 1px solid var(--neutral-medium); background-color: white;">
+              </div>
+              <button onclick="loginWithEmail()" class="btn w-100" style="background-color: transparent; border: 1px solid var(--primary); border-radius: 8px; padding: 10px; color: var(--primary); font-weight: 500; transition: all 0.2s;">
+                <i class="fas fa-envelope me-2"></i> E-posta ile giriş yap
+              </button>
+            </div>
+          </div>
+          
+          <div class="profile-info d-none" id="side-profile-info">
+            <div class="text-center mb-3">
+              <i class="fas fa-user-circle fa-3x mb-2"></i>
+              <h5 id="side-user-name" class="mb-1">Kullanıcı</h5>
+              <small class="text-muted d-block mb-3">Hoş geldiniz!</small>
+              <div class="d-grid">
+                <button onclick="handleLogout()" class="btn btn-sm" style="border: 1px solid var(--accent); color: var(--accent); background-color: transparent;">
+                  <i class="fas fa-sign-out-alt me-2"></i> Çıkış Yap
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section style="margin-top: 30px;">
+        <h4 style="margin-top: 0; margin-bottom: 15px; color: var(--primary);">📂 İçerikler</h4>
+        <div style="height: 2px; background-color: var(--primary); width: 100%; margin-bottom: 15px;"></div>
+        <nav>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-book-open" style="color: var(--primary);"></i> Araştırmalar</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-lightbulb" style="color: var(--primary);"></i> Teoriler</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-project-diagram" style="color: var(--primary);"></i> Mekanizmalar</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-hospital-user" style="color: var(--primary);"></i> Klinik Vaka</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-folder-open" style="color: var(--primary);"></i> Kategoriler</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-calendar-alt" style="color: var(--primary);"></i> Etkinlikler</a>
+          <a href="#" style="color: var(--accent); font-weight: 600; transition: color 0.2s;"><i class="fas fa-graduation-cap" style="color: var(--accent);"></i> Eğitimler</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-comment-dots" style="color: var(--primary);"></i> Geri Bildirim</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-users" style="color: var(--primary);"></i> Topluluk</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-info-circle" style="color: var(--primary);"></i> Hakkımızda</a>
+        </nav>
+      </section>
+    </aside>
+
+    <main>
+      <section class="mb-4">
+        <h1 class="mb-4" style="color: var(--primary); border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px;">Eğitimler</h1>
+        <p class="lead">Geleneksel Çin tıbbı ve akupunktur ile ilgili kurslar, sertifika programları ve eğitim fırsatları.</p>
+        
+        <div class="row mb-4">
+          <div class="col-12 mb-3">
+            <div class="input-group">
+              <input type="text" id="searchInput" class="form-control" placeholder="Eğitim adı veya konusu ara..." style="border: 1px solid var(--neutral-medium); border-radius: 8px 0 0 8px;">
+              <button class="btn" type="button" style="background-color: var(--accent); color: white; border: none; border-radius: 0 8px 8px 0;"><i class="fas fa-search"></i></button>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent; margin-right: 5px; margin-bottom: 5px;"><i class="fas fa-sort-amount-down" style="color: var(--accent);"></i> En Yeni</button>
+              <button class="btn" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent; margin-right: 5px; margin-bottom: 5px;"><i class="fas fa-sort-alpha-down" style="color: var(--accent);"></i> A-Z</button>
+              <button class="btn" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent; margin-right: 5px; margin-bottom: 5px;"><i class="fas fa-filter" style="color: var(--accent);"></i> Seviye</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="education-list">
+          {{education_items}}
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+      </div>
+      <div class="footer-section" style="text-align:center; width:100%; margin-top: 1rem;">
+        <div class="social-icons">
+          <a href="#" title="İletişim"><i class="fas fa-envelope social-icon"></i></a>
+          <a href="#" title="Gizlilik"><i class="fas fa-shield-alt social-icon"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram social-icon"></i></a>
+          <a href="#" title="YouTube"><i class="fab fa-youtube social-icon"></i></a>
+          <a href="#" title="LinkedIn"><i class="fab fa-linkedin social-icon"></i></a>
+          <a href="#" title="Makaleler"><i class="bi bi-journal-text social-icon"></i></a>
+          <a href="#" title="Etkinlikler"><i class="bi bi-calendar-event social-icon"></i></a>
+          <a href="#" title="Hakkında"><i class="bi bi-info-circle social-icon"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 TCMTürkiye | Bilimle Güçlenen Geleneksel Tıp. Son güncelleme: {{last_updated}}
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+  <script>
+    // Firebase yapılandırması
+    const firebaseConfig = {
+      apiKey: "AIzaSyAc_w-dWiaNTvppgJrZ4LXMKn41yVNX514",
+      authDomain: "acusnap.firebaseapp.com",
+      databaseURL: "https://acusnap-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "acusnap",
+      storageBucket: "acusnap.appspot.com",
+      messagingSenderId: "546743024396",
+      appId: "1:546743024396:web:4af350295742a74aa92729",
+      measurementId: "G-KMCFLD53KF"
+    };
+    
+    // Firebase'i başlat
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const provider = new firebase.auth.GoogleAuthProvider();
+    const database = firebase.database();
+    
+    // Google ile giriş fonksiyonu
+    function loginWithGoogle() {
+      auth.signInWithRedirect(provider);
+    }
+    
+    // Email ile giriş fonksiyonu
+    function loginWithEmail() {
+      const email = document.getElementById('email-input').value;
+      const password = document.getElementById('password-input').value;
+      
+      if (!email || !password) {
+        alert('Lütfen email ve şifre girin!');
+        return;
+      }
+      
+      auth.signInWithEmailAndPassword(email, password)
+        .catch((error) => {
+          alert('Giriş yapılırken bir hata oluştu: ' + error.message);
+        });
+    }
+    
+    // Çıkış fonksiyonu
+    function handleLogout() {
+      auth.signOut().then(() => {
+        console.log('Çıkış yapıldı');
+      }).catch((error) => {
+        console.error('Çıkış hatası:', error);
+      });
+    }
+    
+    // Kullanıcı arayüzünü güncelle
+    function updateUI(user) {
+      const loginOptions = document.getElementById('side-login-options');
+      const profileInfo = document.getElementById('side-profile-info');
+      const profileIcon = document.getElementById('profile-icon');
+      const userName = document.getElementById('side-user-name');
+      
+      if (user) {
+        loginOptions.classList.add('d-none');
+        profileInfo.classList.remove('d-none');
+        profileIcon.classList.remove('d-none');
+        userName.textContent = user.displayName || user.email;
+      } else {
+        loginOptions.classList.remove('d-none');
+        profileInfo.classList.add('d-none');
+        profileIcon.classList.add('d-none');
+      }
+    }
+    
+    // Dil değiştirme fonksiyonu
+    function toggleLang() {
+      const current = window.location.href;
+      if (current.includes("lang=en")) {
+        window.location.href = current.replace("lang=en", "lang=tr");
+      } else if (current.includes("lang=tr")) {
+        window.location.href = current.replace("lang=tr", "lang=en");
+      } else {
+        const newUrl = current.includes("?") ? current + "&lang=en" : current + "?lang=en";
+        window.location.href = newUrl;
+      }
+    }
+    
+    // Oturum durumunu dinle
+    auth.onAuthStateChanged(user => {
+      updateUI(user);
+    });
+  </script>
+</body>
+</html>
