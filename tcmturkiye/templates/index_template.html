@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCM Türkiye - Geleneksel Çin Tıbbı</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="/">
+                        <img src="/static/img/logo.png" alt="TCM Türkiye Logo">
+                        <span>TCM Türkiye</span>
+                    </a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/">Ana Sayfa</a></li>
+                        <li><a href="/content/html/research">Araştırmalar</a></li>
+                        <li><a href="/content/html/theory">Teoriler</a></li>
+                        <li><a href="/content/html/mechanism">Mekanizmalar</a></li>
+                        <li><a href="/content/html/clinical_case">Klinik Vakalar</a></li>
+                        <li><a href="/content/html/event">Etkinlikler</a></li>
+                        <li><a href="/content/html/education">Eğitimler</a></li>
+                    </ul>
+                </nav>
+                <div class="profile-container">
+                    <div class="profile-icon">
+                        <i class="fas fa-user" style="color: white;"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li><a href="#" id="login-button">Google ile Giriş Yap</a></li>
+                            <li><a href="#" id="profile-button" style="display: none;">Profil</a></li>
+                            <li><a href="#" id="logout-button" style="display: none;">Çıkış Yap</a></li>
+                        </ul>
+                    </div>
+                    <div class="user-avatar" id="user-avatar" style="display: none;">
+                        <img src="" alt="Kullanıcı" id="avatar-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Geleneksel Çin Tıbbı ve Akupunktur</h1>
+                <p>Binlerce yıllık bilgelik, modern bilimle buluşuyor</p>
+                <div class="search-box">
+                    <input type="text" placeholder="TCM ve akupunktur hakkında arama yapın...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories">
+        <div class="container">
+            <h2>İçerik Kategorileri</h2>
+            <div class="category-grid">
+                {{category_cards}}
+            </div>
+        </div>
+    </section>
+
+    <section class="latest">
+        <div class="container">
+            <h2>Son Eklenenler</h2>
+            <div class="latest-grid" id="latest-content">
+                <!-- JavaScript ile doldurulacak -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/static/img/logo.png" alt="TCM Türkiye Logo">
+                    <span>TCM Türkiye</span>
+                </div>
+                <div class="footer-links">
+                    <h3>Hızlı Erişim</h3>
+                    <ul>
+                        <li><a href="/">Ana Sayfa</a></li>
+                        <li><a href="/content/html/research">Araştırmalar</a></li>
+                        <li><a href="/content/html/theory">Teoriler</a></li>
+                        <li><a href="/content/html/mechanism">Mekanizmalar</a></li>
+                        <li><a href="/content/html/clinical_case">Klinik Vakalar</a></li>
+                        <li><a href="/content/html/event">Etkinlikler</a></li>
+                        <li><a href="/content/html/education">Eğitimler</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>İletişim</h3>
+                    <p><i class="fas fa-envelope"></i> info@tcmturkiye.com</p>
+                    <p><i class="fas fa-phone"></i> +90 212 123 45 67</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TCM Türkiye. Tüm hakları saklıdır.</p>
+            <p>Son güncelleme: {{last_updated}}</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-compat-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-compat-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-compat-database.js"></script>
+    <script>
+        // Firebase yapılandırması
+        const firebaseConfig = {
+            apiKey: "AIzaSyAc_w-dWiaNTvppgJrZ4LXMKn41yVNX514",
+            authDomain: "acusnap.firebaseapp.com",
+            databaseURL: "https://acusnap-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "acusnap",
+            storageBucket: "acusnap.firebasestorage.app",
+            messagingSenderId: "546743024396",
+            appId: "1:546743024396:web:4af350295742a74aa92729",
+            measurementId: "G-KMCFLD53KF"
+        };
+        
+        // Firebase başlatma
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

@@ -6,3 +6,7 @@ __pycache__/
 .env
 *.log
 .pubmed_raw.xml
+.png
+.md
+.tr.md
+.en.md

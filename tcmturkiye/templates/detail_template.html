@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{item_title}} - TCM Türkiye</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="/">
+                        <img src="/static/img/logo.png" alt="TCM Türkiye Logo">
+                        <span>TCM Türkiye</span>
+                    </a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/">Ana Sayfa</a></li>
+                        <li><a href="/content/html/research" class="{{active_research}}">Araştırmalar</a></li>
+                        <li><a href="/content/html/theory" class="{{active_theory}}">Teoriler</a></li>
+                        <li><a href="/content/html/mechanism" class="{{active_mechanism}}">Mekanizmalar</a></li>
+                        <li><a href="/content/html/clinical_case" class="{{active_clinical_case}}">Klinik Vakalar</a></li>
+                        <li><a href="/content/html/event" class="{{active_event}}">Etkinlikler</a></li>
+                        <li><a href="/content/html/education" class="{{active_education}}">Eğitimler</a></li>
+                    </ul>
+                </nav>
+                <div class="profile-container">
+                    <div class="profile-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li><a href="#" id="login-button">Giriş Yap</a></li>
+                            <li><a href="#" id="profile-button" style="display: none;">Profil</a></li>
+                            <li><a href="#" id="logout-button" style="display: none;">Çıkış Yap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="detail-header" style="background-color: {{category_color}};">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/">Ana Sayfa</a> &gt; 
+                <a href="{{category_url}}">{{category_name}}</a> &gt; 
+                <span>{{item_title}}</span>
+            </div>
+            <h1>{{item_title}}</h1>
+            <div class="detail-meta">
+                <span><i class="far fa-calendar-alt"></i> {{item_date}}</span>
+                <span><i class="fas fa-user"></i> {{item_author}}</span>
+                <span><i class="fas fa-globe"></i> <a href="{{item_source_url}}" target="_blank">{{item_source}}</a></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="detail-content">
+        <div class="container">
+            <article>
+                <div class="content">
+                    {{item_content}}
+                </div>
+                
+                <div class="additional-info">
+                    {{additional_content}}
+                </div>
+                
+                <div class="source-info">
+                    <p>
+                        <strong>Kaynak:</strong> 
+                        <a href="{{item_source_url}}" target="_blank">{{item_source}}</a>
+                    </p>
+                </div>
+            </article>
+            
+            <aside class="sidebar">
+                <div class="widget related-content">
+                    <h3>İlgili İçerikler</h3>
+                    <ul id="related-content-list">
+                        <!-- JavaScript ile doldurulacak -->
+                    </ul>
+                </div>
+                
+                <div class="widget share">
+                    <h3>Paylaş</h3>
+                    <div class="social-share">
+                        <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/static/img/logo.png" alt="TCM Türkiye Logo">
+                    <span>TCM Türkiye</span>
+                </div>
+                <div class="footer-links">
+                    <h3>Hızlı Erişim</h3>
+                    <ul>
+                        <li><a href="/">Ana Sayfa</a></li>
+                        <li><a href="/content/html/research">Araştırmalar</a></li>
+                        <li><a href="/content/html/theory">Teoriler</a></li>
+                        <li><a href="/content/html/mechanism">Mekanizmalar</a></li>
+                        <li><a href="/content/html/clinical_case">Klinik Vakalar</a></li>
+                        <li><a href="/content/html/event">Etkinlikler</a></li>
+                        <li><a href="/content/html/education">Eğitimler</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>İletişim</h3>
+                    <p><i class="fas fa-envelope"></i> info@tcmturkiye.com</p>
+                    <p><i class="fas fa-phone"></i> +90 212 123 45 67</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TCM Türkiye. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-compat-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-compat-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-compat-database.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/detail.js"></script>
+</body>
+</html>

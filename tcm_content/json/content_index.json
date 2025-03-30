@@ -1,0 +1,35 @@
+{
+  "last_updated": "2025-03-30 05:13:14",
+  "categories": {
+    "research": {
+      "name": "Araştırmalar",
+      "file": "research_content.json",
+      "color": "#4285F4"
+    },
+    "theory": {
+      "name": "Teoriler",
+      "file": "theory_content.json",
+      "color": "#EA4335"
+    },
+    "mechanism": {
+      "name": "Mekanizmalar",
+      "file": "mechanism_content.json",
+      "color": "#FBBC05"
+    },
+    "clinical_case": {
+      "name": "Klinik Vaka",
+      "file": "clinical_case_content.json",
+      "color": "#34A853"
+    },
+    "event": {
+      "name": "Etkinlikler",
+      "file": "event_content.json",
+      "color": "#FF6D01"
+    },
+    "education": {
+      "name": "Eğitimler",
+      "file": "education_content.json",
+      "color": "#46BDC6"
+    }
+  }
+}
