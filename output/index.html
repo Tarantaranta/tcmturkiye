@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>ACUSNAP | Geleneksel Çin Tıbbı ve Akupunktur Platformu</title>
+  <meta name="description" content="ACUSNAP, geleneksel Çin tıbbı, akupunktur, vaka sunumları ve bilimsel araştırmalarla desteklenen modern bir bilgi platformudur.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
+    
+    .card { height: 100%; }
+    .feature-card { min-height: 200px; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      background-color: #FFFFFF;
+      color: #2C3E50;
+    }
+    
+    /* Ana renk paleti */
+    :root {
+      --primary: #3A7CA5; /* Ana mavi renk */
+      --primary-light: #D4E6F1; /* Açık mavi */
+      --primary-dark: #2471A3; /* Koyu mavi */
+      --accent: #F9A26C; /* Pastel turuncu kontrast renk */
+      --accent-light: #FFDBC2; /* Açık pastel turuncu */
+      --neutral-light: #F8F9FA; /* Açık nötr */
+      --neutral-medium: #E9ECEF; /* Orta nötr */
+      --neutral-dark: #5D6D7E; /* Koyu nötr */
+      --text-primary: #2C3E50; /* Ana metin rengi */
+      --text-secondary: #7F8C8D; /* İkincil metin rengi */
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background-color: #fff;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1000;
+      border-radius: 4px;
+      padding: 8px 0;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    .profile-icon:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      display: block;
+    }
+
+    .profile-icon .dropdown-content:hover {
+      opacity: 1;
+      visibility: visible;
+      display: block;
+    }
+
+    .dropdown-content a {
+      color: #333;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.2s;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f5f5f5;
+    }
+
+    .profile-icon {
+      position: relative;
+      cursor: pointer;
+      padding: 8px;
+      color: white;
+    }
+
+    .profile-icon:hover .dropdown-content {
+      display: block;
+    }
+    header {
+      background-color: var(--neutral-light);
+      color: var(--text-primary);
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      height: 70px;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-bottom: 1px solid var(--neutral-medium);
+    }
+    .header-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+    .brand-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      color: var(--primary); /* Ana mavi renk */
+      margin-bottom: 0.2rem;
+    }
+    .brand-slogan {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      letter-spacing: 0.5px;
+    }
+    .topnav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 1;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .topnav a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: transform 0.3s ease;
+    }
+    .topnav a i {
+      font-size: 1rem;
+    }
+    .topnav a:hover i {
+      transform: scale(1.2);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .profile-icon {
+      position: relative;
+    }
+    .notification-icon {
+      color: white;
+      margin-right: 0.5rem;
+      cursor: pointer;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      margin-top: 5px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 0.5rem 0;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      color: #333;
+      text-decoration: none;
+    }
+    .dropdown-content a:hover {
+      background: #f0f0f0;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .layout {
+      display: flex;
+      flex: 1;
+    }
+    aside {
+      width: 280px;
+      background: var(--neutral-light);
+      padding: 1.5rem;
+      border-right: 1px solid var(--neutral-medium);
+      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    }
+    main {
+      flex: 1;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+    footer {
+      background: var(--neutral-light);
+      padding: 1rem 2rem;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      border-top: 1px solid var(--neutral-medium);
+    }
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+    }
+    .footer-section a {
+      display: inline-block;
+      margin: 0 0.5rem;
+      font-size: 1.3rem;
+    }
+    .footer-section h4 {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .footer-section a {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: #333;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .footer-section a:hover {
+      color: #c62828;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+    }
+    .subscribe-box {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .subscribe-box input[type="email"] {
+      width: calc(100% - 1rem);
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .subscribe-box button {
+      padding: 0.5rem 1rem;
+      background: #c62828;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .subscribe-box button:hover {
+      background: #a52c2c;
+    }
+    nav a {
+      display: block;
+      margin-bottom: 1rem;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #c62828;
+    }
+    .lang-toggle {
+      background: white;
+      color: #c62828;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    h2 {
+      margin-bottom: 1rem;
+    }
+    .highlight-box {
+      background: #fff3e0;
+      border-left: 6px solid #ff9800;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .article-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: 0.2s ease;
+    }
+    .article-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    .article-title {
+      text-decoration: none;
+      color: #c62828;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .article-date {
+      font-size: 0.85rem;
+      color: #777;
+    }
+    .article-rating {
+      font-size: 0.8rem;
+      color: #555;
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    button {
+      margin-right: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: #eee;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #c62828;
+      color: white;
+    }
+    .article-card i.bi-stars {
+      color: #ff9800;
+      margin-right: 6px;
+    }
+    .social-icon {
+      margin-right: 0.5rem;
+      color: #333;
+      transition: color 0.3s ease;
+      display: inline-block;
+    }
+    .social-icon:hover {
+      color: #c62828;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 0.8rem;
+      white-space: nowrap;
+    }
+    .filter-buttons button i {
+      margin-right: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="topnav">
+      <a href="#" title="Anasayfa" style="margin-right: auto;"><i class="bi bi-house-door-fill"></i></a>
+    </nav>
+    <div class="header-center">
+      <div class="brand-logo">ACUSNAP</div>
+      <div class="brand-slogan">Geleneksel Tıbbın Modern Yüzü</div>
+    </div>
+    <div class="nav-actions">
+      <button class="lang-toggle" onclick="toggleLang()" style="color: var(--text-primary);"><i class="fas fa-language"></i></button>
+      <div class="profile-icon d-none" id="profile-icon">
+        <i class="fas fa-user-circle fa-lg" style="color: var(--text-primary);"></i>
+        <div class="dropdown-content">
+          <a href="#profil">Profil</a>
+          <a href="#ayarlar">Ayarlar</a>
+          <a href="#" onclick="handleLogout()">Çıkış</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <section class="mb-4">
+        <div id="side-login-section">
+          <div id="side-login-options">
+            <h5 class="mb-4" style="font-weight: 600; color: var(--text-primary); font-size: 1.1rem;">Giriş Yap</h5>
+            
+            <div class="d-grid gap-2 mb-3">
+              <button id="side-login-button" onclick="loginWithGoogle()" class="btn w-100" style="background-color: white; border: 1px solid var(--neutral-medium); border-radius: 8px; padding: 10px; transition: all 0.2s; color: var(--text-primary); font-weight: 500;">
+                <i class="fab fa-google me-2" style="color: #4285F4;"></i><span style="color: #DB4437;">G</span><span style="color: #4285F4;">o</span><span style="color: #F4B400;">o</span><span style="color: #4285F4;">g</span><span style="color: #0F9D58;">l</span><span style="color: #DB4437;">e</span> ile devam et
+              </button>
+            </div>
+            
+            <div class="text-center mb-3">
+              <div style="display: flex; align-items: center; margin: 15px 0;">
+                <div style="flex-grow: 1; height: 1px; background-color: var(--neutral-medium);"></div>
+                <div style="margin: 0 10px; color: var(--text-secondary); font-size: 0.8rem;">veya</div>
+                <div style="flex-grow: 1; height: 1px; background-color: var(--neutral-medium);"></div>
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <div class="mb-3">
+                <input type="email" id="email-input" class="form-control" placeholder="E-posta" style="border-radius: 8px; padding: 10px; border: 1px solid var(--neutral-medium); background-color: white;">
+              </div>
+              <div class="mb-3">
+                <input type="password" id="password-input" class="form-control" placeholder="Şifre" style="border-radius: 8px; padding: 10px; border: 1px solid var(--neutral-medium); background-color: white;">
+              </div>
+              <button onclick="loginWithEmail()" class="btn w-100" style="background-color: transparent; border: 1px solid var(--primary); border-radius: 8px; padding: 10px; color: var(--primary); font-weight: 500; transition: all 0.2s;">
+                <i class="fas fa-envelope me-2"></i> E-posta ile giriş yap
+              </button>
+            </div>
+            
+            <div class="text-center mt-4">
+              <small><a href="#" onclick="toggleSignUp()" style="color: var(--accent); text-decoration: none; font-weight: 500;">Hesap oluştur</a></small>
+            </div>
+          </div>
+          
+          <div class="profile-info d-none" id="side-profile-info">
+            <div class="text-center mb-3">
+              <i class="fas fa-user-circle fa-3x mb-2"></i>
+              <h5 id="side-user-name" class="mb-1">Kullanıcı</h5>
+              <small class="text-muted d-block mb-3">Hoş geldiniz!</small>
+              <div class="d-grid">
+                <button onclick="handleLogout()" class="btn btn-sm" style="border: 1px solid var(--accent); color: var(--accent); background-color: transparent;">
+                  <i class="fas fa-sign-out-alt me-2"></i> Çıkış Yap
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section style="margin-top: 30px;">
+        <h4 style="margin-top: 0; margin-bottom: 15px; color: var(--primary);">📂 İçerikler</h4>
+        <div style="height: 2px; background-color: var(--primary); width: 100%; margin-bottom: 15px;"></div>
+        <nav>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-book-open" style="color: var(--primary);"></i> Araştırmalar</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-lightbulb" style="color: var(--primary);"></i> Teoriler</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-project-diagram" style="color: var(--primary);"></i> Mekanizmalar</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-hospital-user" style="color: var(--primary);"></i> Klinik Vaka</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-folder-open" style="color: var(--primary);"></i> Kategoriler</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-calendar-alt" style="color: var(--primary);"></i> Etkinlikler</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-graduation-cap" style="color: var(--primary);"></i> Eğitimler</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-comment-dots" style="color: var(--primary);"></i> Geri Bildirim</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-users" style="color: var(--primary);"></i> Topluluk</a>
+          <a href="#" style="color: var(--text-primary); transition: color 0.2s;"><i class="fas fa-info-circle" style="color: var(--primary);"></i> Hakkımızda</a>
+        </nav>
+      </section>
+    </aside>
+
+    <main>
+        <!-- Arama ve Filtreleme Bölümü -->
+        <section class="mb-4">
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            id="searchInput"
+                            class="form-control"
+                            placeholder="Başlığa göre ara..."
+                            onkeyup="searchArticles()"
+                            style="border: 1px solid var(--neutral-medium); border-radius: 8px 0 0 8px;"
+                        />
+                        <button class="btn" type="button" style="background-color: var(--accent); color: white; border: none; border-radius: 0 8px 8px 0;"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="d-flex flex-wrap gap-2">
+                        <button class="btn" onclick="filterByCat('all')" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent; margin-right: 5px; margin-bottom: 5px;"><i class="fas fa-th" style="color: var(--accent);"></i> Tümü</button>
+                        <button class="btn" onclick="filterByCat('Bilimsel')" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent; margin-right: 5px; margin-bottom: 5px;"><i class="fas fa-flask" style="color: var(--accent);"></i> Bilimsel</button>
+                        <button class="btn" onclick="filterByCat('Mekanizma')" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent; margin-right: 5px; margin-bottom: 5px;"><i class="fas fa-cogs" style="color: var(--accent);"></i> Mekanizma</button>
+                        <button class="btn" onclick="filterByCat('Hastalık')" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent; margin-right: 5px; margin-bottom: 5px;"><i class="fas fa-stethoscope" style="color: var(--accent);"></i> Hastalık</button>
+                        <button class="btn" onclick="filterByCat('Teknik')" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent; margin-right: 5px; margin-bottom: 5px;"><i class="fas fa-tools" style="color: var(--accent);"></i> Teknik</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Son Makaleler Bölümü -->
+        <section class="mb-5">
+            <h2 class="mb-4" style="color: var(--primary); border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px;">Güncel Makaleler</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Makale Başlığı 1</h5>
+                            <p class="card-text">Makalenin kısa özeti burada yer alacak...</p>
+                            <a href="#" class="btn btn-sm mb-3" style="border: 1px solid var(--accent); color: var(--primary); background-color: transparent;">Devamını Oku</a>
+                            <div class="comments-section border-top pt-3">
+                                <h6 class="mb-3">Yorumlar</h6>
+                                <div id="comment-list-makale1" class="mb-3"></div>
+                                <textarea id="comment-makale1" class="form-control mb-2" placeholder="Yorumunuz..."></textarea>
+                                <button onclick="postComment('makale1')" class="btn" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent; font-size: 0.7rem; padding: 0.2rem 0.5rem;">Yorum Yap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Makale Başlığı 2</h5>
+                            <p class="card-text">Makalenin kısa özeti burada yer alacak...</p>
+                            <a href="#" class="btn btn-sm mb-3" style="border: 1px solid var(--accent); color: var(--primary); background-color: transparent;">Devamını Oku</a>
+                            <div class="comments-section border-top pt-3">
+                                <h6 class="mb-3">Yorumlar</h6>
+                                <div id="comment-list-makale2" class="mb-3"></div>
+                                <textarea id="comment-makale2" class="form-control mb-2" placeholder="Yorumunuz..."></textarea>
+                                <button onclick="postComment('makale2')" class="btn" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent; font-size: 0.7rem; padding: 0.2rem 0.5rem;">Yorum Yap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Önerilen İçerikler Bölümü -->
+        <section class="mb-5">
+            <h2 class="mb-4" style="color: var(--primary); border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px;">Önerilen İçerikler</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Önerilen Makale 1</h5>
+                            <p class="card-text">Önerilen makalenin kısa özeti...</p>
+                            <a href="#" class="btn btn-sm mb-3" style="border: 1px solid var(--accent); color: var(--primary); background-color: transparent;">Devamını Oku</a>
+                            <div class="comments-section border-top pt-3">
+                                <h6 class="mb-3">Yorumlar</h6>
+                                <div id="comment-list-onerilen1" class="mb-3"></div>
+                                <textarea id="comment-onerilen1" class="form-control mb-2" placeholder="Yorumunuz..."></textarea>
+                                <button onclick="postComment('onerilen1')" class="btn" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent; font-size: 0.7rem; padding: 0.2rem 0.5rem;">Yorum Yap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Önerilen Makale 2</h5>
+                            <p class="card-text">Önerilen makalenin kısa özeti...</p>
+                            <a href="#" class="btn btn-sm mb-3" style="border: 1px solid var(--accent); color: var(--primary); background-color: transparent;">Devamını Oku</a>
+                            <div class="comments-section border-top pt-3">
+                                <h6 class="mb-3">Yorumlar</h6>
+                                <div id="comment-list-onerilen2" class="mb-3"></div>
+                                <textarea id="comment-onerilen2" class="form-control mb-2" placeholder="Yorumunuz..."></textarea>
+                                <button onclick="postComment('onerilen2')" class="btn" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent; font-size: 0.7rem; padding: 0.2rem 0.5rem;">Yorum Yap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Yan Yana Özellik Kartları -->
+        <section class="mb-5">
+            <div class="row">
+                <!-- Topluluk Katkıları -->
+                <div class="col-md-3">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <h4 class="card-title">Topluluk Katkıları</h4>
+                            <p class="card-text">Akupunktur uzmanları tarafından gönderilen içerikler ve vaka paylaşımları burada yayınlanır.</p>
+                            <a href="#" class="btn btn-sm" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent;"><span style="color: var(--accent);">→</span> Vaka Paylaş</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Duyurular -->
+                <div class="col-md-3">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <h4 class="card-title">Duyurular</h4>
+                            <p class="card-text">Yeni gelişmeler, etkinlikler ve proje güncellemeleri burada paylaşılır.</p>
+                            <a href="#" class="btn btn-sm" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent;"><span style="color: var(--accent);">→</span> Tüm Duyuruları Gör</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- İstatistik Paneli -->
+                <div class="col-md-3">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <h4 class="card-title">İstatistik Paneli</h4>
+                            <p class="card-text">En çok görüntülenen makaleler, kategori dağılımı ve ziyaretçi istatistikleri burada yer alacak.</p>
+                            <a href="#" class="btn btn-sm" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent;"><span style="color: var(--accent);">→</span> İstatistikleri Keşfet</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medya Desteği -->
+                <div class="col-md-3">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <h4 class="card-title">Medya Desteği</h4>
+                            <p class="card-text">Makale içeriklerine görsel, grafik ve video linkleri ekleyebilirsiniz.</p>
+                            <a href="#" class="btn btn-sm" style="border: 1px solid var(--primary); color: var(--primary); background-color: transparent;"><span style="color: var(--accent);">→</span> Medya Ekle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+      </div>
+      <div class="footer-section" style="text-align:center; width:100%; margin-top: 1rem;">
+        <div class="social-icons">
+          <a href="#" title="İletişim"><i class="fas fa-envelope social-icon"></i></a>
+          <a href="#" title="Gizlilik"><i class="fas fa-shield-alt social-icon"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram social-icon"></i></a>
+          <a href="#" title="YouTube"><i class="fab fa-youtube social-icon"></i></a>
+          <a href="#" title="LinkedIn"><i class="fab fa-linkedin social-icon"></i></a>
+          <a href="#" title="Makaleler"><i class="bi bi-journal-text social-icon"></i></a>
+          <a href="#" title="Etkinlikler"><i class="bi bi-calendar-event social-icon"></i></a>
+          <a href="#" title="Hakkında"><i class="bi bi-info-circle social-icon"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+      </div>
+    </div>
+    <div style="display:flex; justify-content:center;">
+      <div class="subscribe-box">
+        <input type="email" placeholder="E-posta adresiniz" />
+        <button>Abone Ol</button>
+        <p style="font-size: 0.75rem; color: #777;">Gelişmelerden haberdar olun!</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem;">
+          <i class="fas fa-lock"></i> Abonelik bilgileriniz gizli tutulur.
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 TCMTürkiye | Bilimle Güçlenen Geleneksel Tıp.
+    </div>
+  </footer>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KMCFLD53KF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KMCFLD53KF');
+  </script>
+
+  <script>
+    function toggleLang() {
+      const current = window.location.href;
+      if (current.includes("lang=en")) {
+        window.location.href = current.replace("lang=en", "lang=tr");
+      } else if (current.includes("lang=tr")) {
+        window.location.href = current.replace("lang=tr", "lang=en");
+      } else {
+        const newUrl = current.includes("?") ? current + "&lang=en" : current + "?lang=en";
+        window.location.href = newUrl;
+      }
+    }
+
+    function searchArticles() {
+      var input = document.getElementById('searchInput').value.toUpperCase();
+      var cards = document.getElementsByClassName('article-card');
+      for (var i = 0; i < cards.length; i++) {
+        var title = cards[i].getElementsByClassName('article-title')[0];
+        var txtValue = title.textContent || title.innerText;
+        cards[i].style.display = txtValue.toUpperCase().indexOf(input) > -1 ? '' : 'none';
+      }
+    }
+
+    function filterByCat(category) {
+      var cards = document.getElementsByClassName('article-card');
+      for (var i = 0; i < cards.length; i++) {
+        var catVal = cards[i].getAttribute('data-cat') || '';
+        cards[i].style.display = (category === 'all' || catVal.includes(category)) ? '' : 'none';
+      }
+    }
+  </script>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics-compat.js"></script>
+<!-- reCAPTCHA (Phone Auth için gerekli) -->
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+<script>
+  // Firebase yapılandırması
+  const firebaseConfig = {
+    apiKey: "AIzaSyAc_w-dWiaNTvppgJrZ4LXMKn41yVNX514",
+    authDomain: "acusnap.firebaseapp.com",
+    databaseURL: "https://acusnap-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "acusnap",
+    storageBucket: "acusnap.appspot.com", // .firebasestorage.app yerine .appspot.com kullanıldı
+    messagingSenderId: "546743024396",
+    appId: "1:546743024396:web:4af350295742a74aa92729",
+    measurementId: "G-KMCFLD53KF"
+  };
+  
+  // Hata ayıklama için
+  console.log('Firebase yapılandırması:', firebaseConfig);
+
+  // Firebase'i başlat
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const provider = new firebase.auth.GoogleAuthProvider();
+  const database = firebase.database();
+  const analytics = firebase.analytics();
+  
+  // Hata ayıklama için
+  console.log('Firebase başlatıldı:', firebase);
+  console.log('Auth başlatıldı:', auth);
+
+  // Google ile giriş fonksiyonu
+  window.loginWithGoogle = function() {
+    console.log('Google ile giriş deneniyor...');
+    // Önce popup yöntemini dene, hata alırsa redirect'e geç
+    auth.signInWithPopup(provider).then((result) => {
+      console.log('Popup giriş başarılı:', result.user.displayName);
+      // Kullanıcı bilgilerini database'e kaydet
+      database.ref('users/' + result.user.uid).set({
+        name: result.user.displayName,
+        email: result.user.email,
+        lastLogin: new Date().toISOString()
+      }).then(() => {
+        console.log('Kullanıcı bilgileri kaydedildi');
+        alert('Başarıyla giriş yapıldı!');
+      }).catch((error) => {
+        console.error('Kullanıcı bilgileri kaydedilirken hata:', error);
+      });
+    }).catch((error) => {
+      console.error('Popup giriş hatası:', error);
+      // Popup başarısız olursa redirect yöntemini dene
+      if (error.code === 'auth/popup-blocked' || error.code === 'auth/popup-closed-by-user') {
+        console.log('Popup engellendi, redirect yöntemine geçiliyor...');
+        auth.signInWithRedirect(provider).catch((redirectError) => {
+          console.error('Redirect giriş hatası:', redirectError);
+          alert('Giriş yapılırken bir hata oluştu: ' + redirectError.message);
+        });
+      } else {
+        alert('Giriş yapılırken bir hata oluştu: ' + error.message);
+      }
+    });
+  };
+  
+  // Email ile giriş fonksiyonu
+  window.loginWithEmail = function() {
+    const email = document.getElementById('email-input').value;
+    const password = document.getElementById('password-input').value;
+    
+    if (!email || !password) {
+      alert('Lütfen email ve şifre girin!');
+      return;
+    }
+    
+    auth.signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        console.log('Email ile giriş başarılı:', userCredential.user.email);
+        // Kullanıcı bilgilerini güncelle
+        database.ref('users/' + userCredential.user.uid).update({
+          lastLogin: new Date().toISOString()
+        });
+        alert('Başarıyla giriş yapıldı!');
+      })
+      .catch((error) => {
+        console.error('Email giriş hatası:', error);
+        if (error.code === 'auth/user-not-found') {
+          if (confirm('Kullanıcı bulunamadı. Yeni hesap oluşturmak ister misiniz?')) {
+            createAccount(email, password);
+          }
+        } else {
+          alert('Giriş yapılırken bir hata oluştu: ' + error.message);
+        }
+      });
+  };
+  
+  // Hesap oluşturma fonksiyonu
+  function createAccount(email, password) {
+    auth.createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        console.log('Hesap oluşturuldu:', userCredential.user.email);
+        // Kullanıcı bilgilerini database'e kaydet
+        database.ref('users/' + userCredential.user.uid).set({
+          email: email,
+          createdAt: new Date().toISOString(),
+          lastLogin: new Date().toISOString()
+        });
+        alert('Hesabınız başarıyla oluşturuldu!');
+      })
+      .catch((error) => {
+        console.error('Hesap oluşturma hatası:', error);
+        alert('Hesap oluşturulurken bir hata oluştu: ' + error.message);
+      });
+  }
+  
+  // Hesap oluşturma/giriş yapma mod değiştirme
+  window.toggleSignUp = function() {
+    const emailInput = document.getElementById('email-input');
+    const passwordInput = document.getElementById('password-input');
+    
+    if (emailInput.value && passwordInput.value) {
+      createAccount(emailInput.value, passwordInput.value);
+    } else {
+      alert('Lütfen email ve şifre girin!');
+    }
+  };
+
+  // Redirect sonrası işlem
+  auth.getRedirectResult().then((result) => {
+    console.log('Redirect sonucu:', result);
+    if (result.user) {
+      const user = result.user;
+      console.log('Kullanıcı bilgileri:', user);
+      // Kullanıcı bilgilerini database'e kaydet
+      database.ref('users/' + user.uid).set({
+        name: user.displayName,
+        email: user.email,
+        lastLogin: new Date().toISOString()
+      }).then(() => {
+        console.log('Kullanıcı bilgileri kaydedildi');
+      }).catch((error) => {
+        console.error('Kullanıcı bilgileri kaydedilirken hata:', error);
+      });
+      console.log('Giriş başarılı:', user.displayName);
+      alert('Başarıyla giriş yapıldı!');
+      updateUI(user);
+    } else {
+      console.log('Kullanıcı giriş yapmadı veya giriş iptal edildi');
+    }
+  }).catch((error) => {
+    console.error('Redirect sonrası hata:', error);
+    alert('Giriş işlemi sırasında bir hata oluştu: ' + error.message);
+  });
+
+  // Yorum gönderme fonksiyonu
+  window.postComment = function(articleId) {
+    if (!auth.currentUser) {
+      alert('Yorum yapmak için giriş yapmalısınız!');
+      return;
+    }
+
+    const commentText = document.getElementById('comment-' + articleId).value;
+    if (!commentText.trim()) {
+      alert('Lütfen bir yorum yazın!');
+      return;
+    }
+
+    database.ref('comments/' + articleId).push({
+      text: commentText,
+      userId: auth.currentUser.uid,
+      userName: auth.currentUser.displayName,
+      timestamp: new Date().toISOString()
+    }).then(() => {
+      document.getElementById('comment-' + articleId).value = '';
+      alert('Yorumunuz başarıyla eklendi!');
+    }).catch(error => {
+      console.error('Yorum ekleme hatası:', error);
+      alert('Yorum eklenirken bir hata oluştu.');
+    });
+  };
+
+  // Yorumları yükleme fonksiyonu
+  window.loadComments = function(articleId) {
+    database.ref('comments/' + articleId).on('value', (snapshot) => {
+      const comments = snapshot.val();
+      const commentList = document.getElementById('comment-list-' + articleId);
+      if (!commentList) return;
+
+      commentList.innerHTML = '';
+      if (comments) {
+        Object.values(comments).forEach(comment => {
+          const commentDiv = document.createElement('div');
+          commentDiv.className = 'comment';
+          commentDiv.innerHTML = `
+            <strong>${comment.userName}</strong>
+            <p>${comment.text}</p>
+            <small>${new Date(comment.timestamp).toLocaleString()}</small>
+          `;
+          commentList.appendChild(commentDiv);
+        });
+      }
+    });
+  };
+
+  // Kullanıcı arayüzünü güncelle
+  function updateUI(user) {
+    const profileIcon = document.getElementById('profile-icon');
+    
+    // Yan menü için UI güncellemesi
+    const sideLoginOptions = document.getElementById('side-login-options');
+    const sideProfileInfo = document.getElementById('side-profile-info');
+    const sideUserName = document.getElementById('side-user-name');
+    
+    if (user) {
+      console.log('UI güncelleniyor, kullanıcı var:', user.displayName);
+      // Üst menü güncellemesi
+      if (profileIcon) profileIcon.classList.remove('d-none');
+      
+      // Yan menü güncellemesi
+      if (sideLoginOptions) sideLoginOptions.classList.add('d-none');
+      if (sideProfileInfo) {
+        sideProfileInfo.classList.remove('d-none');
+        if (sideUserName) sideUserName.textContent = user.displayName || 'Kullanıcı';
+      }
+    } else {
+      console.log('UI güncelleniyor, kullanıcı yok');
+      // Üst menü güncellemesi
+      if (profileIcon) profileIcon.classList.add('d-none');
+      
+      // Yan menü güncellemesi
+      if (sideLoginOptions) sideLoginOptions.classList.remove('d-none');
+      if (sideProfileInfo) sideProfileInfo.classList.add('d-none');
+    }
+  }
+
+  // Çıkış fonksiyonu
+  window.handleLogout = function() {
+    auth.signOut().then(() => {
+      alert('Çıkış yapıldı!');
+      updateUI(null);
+    }).catch(error => {
+      console.error('Çıkış hatası:', error);
+      alert('Çıkış yapılırken bir hata oluştu.');
+    });
+  }
+
+  // Oturum durumunu dinle
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      console.log('Auth durumu değişti: Kullanıcı giriş yaptı');
+      console.log('Kullanıcı bilgileri:', {
+        displayName: user.displayName,
+        email: user.email,
+        uid: user.uid,
+        photoURL: user.photoURL
+      });
+      
+      // Kullanıcı profil bilgilerini güncelle
+      const userProfileLink = document.querySelector('.dropdown-content a[href="#profil"]');
+      if (userProfileLink) {
+        userProfileLink.textContent = user.displayName || 'Profil';
+      }
+    } else {
+      console.log('Auth durumu değişti: Kullanıcı çıkış yaptı veya giriş yapmadı');
+    }
+    updateUI(user);
+  });
+
+  // Sayfa yüklenince yorumları yükle
+  document.addEventListener('DOMContentLoaded', function() {
+    loadComments('makale1');
+    loadComments('makale2');
+    loadComments('onerilen1');
+    loadComments('onerilen2');
+  });
+</script>
+
+
+</script>
+</body>
+</html>

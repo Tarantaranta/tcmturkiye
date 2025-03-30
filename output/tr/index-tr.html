@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TCM Türkiye - Makale Listesi</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: #f8f8f8;
+      color: #333;
+    }
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #ff385c;
+      text-decoration: none;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #ff385c;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    .search-bar {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    #searchInput {
+      width: 100%;
+      max-width: 500px;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+    }
+    #searchInput:focus {
+      border-color: #ff385c;
+      box-shadow: 0 0 3px rgba(255,56,92,0.3);
+    }
+    .filter-buttons {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .filter-buttons button {
+      display: inline-block;
+      margin: 0.2rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 20px;
+      background: #eee;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .filter-buttons button:hover {
+      background: #ff385c;
+      color: white;
+    }
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .article-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1rem;
+      transition: transform 0.2s ease;
+    }
+    .article-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    .article-title {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      display: block;
+      word-break: break-all;
+    }
+    .article-title:hover {
+      color: #ff385c;
+    }
+    .article-date {
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 600px) {
+      .articles {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="logo">TCMTürkiye</a>
+    <nav>
+      <a href="#home">Anasayfa</a>
+      <a href="#about">Hakkında</a>
+      <a href="#contact">İletişim</a>
+      <!-- Dil geçişi için basit link (bu, dil değişimini sağlamak üzere güncellenebilir) -->
+      <a href="../en/index-en.html">EN</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Türkçe Makaleler</h1>
+
+    <!-- Arama Kutusu -->
+    <div class="search-bar">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Makalelerde Ara..."
+        onkeyup="filterArticlesBySearch()"
+      />
+    </div>
+
+    <!-- Kategori Butonları -->
+    <div class="filter-buttons">
+      <button onclick="filterByCat('all')">Tümü</button>
+      <button onclick="filterByCat('Bilimsel')">Bilimsel</button>
+      <button onclick="filterByCat('Mekanizma')">Mekanizma</button>
+      <button onclick="filterByCat('Hastalık')">Hastalık</button>
+      <button onclick="filterByCat('Teknik')">Teknik</button>
+    </div>
+
+    <!-- Makale Kartları -->
+    <div class="articles" id="articleList">
+      <div class="article-card" data-cat="Bilimsel">
+        <a href="../viewer.html?file=tr/2025-03-29_19-32-11_Akupunktur_ve_Kombine_Terapileri_Aracılığıyla_Polikistik_Over_Sendromlu_Hastalarda_Endokrin_ve_Metab_tr.md" class="article-title" target="_blank">2025-03-29_19-32-11_Akupunktur_ve_Kombine_Terapileri_Aracılığıyla_Polikistik_Over_Sendromlu_Hastalarda_Endokrin_ve_Metab_tr.md</a>
+        <div class="article-date">29 March 2025</div>
+      </div>
+      <div class="article-card" data-cat="Bilimsel">
+        <a href="../viewer.html?file=tr/2025-03-29_16-22-59_Akupunktur_hissinin_beyin_fonksiyonel_ağı_ile_potansiyel_ilişkileri__Bir_EEG_çalışması__tr.md" class="article-title" target="_blank">2025-03-29_16-22-59_Akupunktur_hissinin_beyin_fonksiyonel_ağı_ile_potansiyel_ilişkileri__Bir_EEG_çalışması__tr.md</a>
+        <div class="article-date">29 March 2025</div>
+      </div>
+      <div class="article-card" data-cat="Mekanizma,Hastalık">
+        <a href="../viewer.html?file=tr/2025-03-28_22-38-42_Mechanistic_approach_and_therapeutic_strategies_in_menstrual_and_non-menstrual_migraine__tr.md" class="article-title" target="_blank">2025-03-28_22-38-42_Mechanistic_approach_and_therapeutic_strategies_in_menstrual_and_non-menstrual_migraine__tr.md</a>
+        <div class="article-date">28 March 2025</div>
+      </div>
+      <div class="article-card" data-cat="Bilimsel">
+        <a href="../viewer.html?file=tr/2025-03-28_22-37-09_Polikistik_over_sendromlu_hastalarda_akupunktur_ve_kombinasyon_tedavileri_ile_endokrin_ve_metabolik__tr.md" class="article-title" target="_blank">2025-03-28_22-37-09_Polikistik_over_sendromlu_hastalarda_akupunktur_ve_kombinasyon_tedavileri_ile_endokrin_ve_metabolik__tr.md</a>
+        <div class="article-date">28 March 2025</div>
+      </div>
+      <div class="article-card" data-cat="Bilimsel">
+        <a href="../viewer.html?file=tr/2025-03-28_22-36-02_Akupunktur_hissinin_beyin_fonksiyonel_ağı_ile_potansiyel_ilişkileri__Bir_EEG_çalışması__tr.md" class="article-title" target="_blank">2025-03-28_22-36-02_Akupunktur_hissinin_beyin_fonksiyonel_ağı_ile_potansiyel_ilişkileri__Bir_EEG_çalışması__tr.md</a>
+        <div class="article-date">28 March 2025</div>
+      </div>
+      <div class="article-card" data-cat="Mekanizma,Hastalık">
+        <a href="../viewer.html?file=tr/2025-03-28_22-23-21_Mechanistic_approach_and_therapeutic_strategies_in_menstrual_and_non-menstrual_migraine__tr.md" class="article-title" target="_blank">2025-03-28_22-23-21_Mechanistic_approach_and_therapeutic_strategies_in_menstrual_and_non-menstrual_migraine__tr.md</a>
+        <div class="article-date">28 March 2025</div>
+      </div>
+      <div class="article-card" data-cat="Bilimsel">
+        <a href="../viewer.html?file=tr/2025-03-28_22-22-19_Improvement_of_endocrine_and_metabolic_conditions_in_patients_with_polycystic_ovary_syndrome_through_tr.md" class="article-title" target="_blank">2025-03-28_22-22-19_Improvement_of_endocrine_and_metabolic_conditions_in_patients_with_polycystic_ovary_syndrome_through_tr.md</a>
+        <div class="article-date">28 March 2025</div>
+      </div>
+      <div class="article-card" data-cat="Bilimsel">
+        <a href="../viewer.html?file=tr/2025-03-28_22-21-29_The_potential_associations_between_acupuncture_sensation_and_brain_functional_network__a_EEG_study__tr.md" class="article-title" target="_blank">2025-03-28_22-21-29_The_potential_associations_between_acupuncture_sensation_and_brain_functional_network__a_EEG_study__tr.md</a>
+        <div class="article-date">28 March 2025</div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function filterArticlesBySearch() {
+      var input = document.getElementById('searchInput').value.toUpperCase();
+      var articleList = document.getElementById('articleList');
+      var cards = articleList.getElementsByClassName('article-card');
+      for (var i = 0; i < cards.length; i++) {
+        var title = cards[i].getElementsByClassName('article-title')[0];
+        var txtValue = title.textContent || title.innerText;
+        if (txtValue.toUpperCase().indexOf(input) > -1) {
+          cards[i].style.display = '';
+        } else {
+          cards[i].style.display = 'none';
+        }
+      }
+    }
+
+    function filterByCat(category) {
+      var articleList = document.getElementById('articleList');
+      var cards = articleList.getElementsByClassName('article-card');
+      for (var i = 0; i < cards.length; i++) {
+        var catVal = cards[i].getAttribute('data-cat') || '';
+        if (category === 'all') {
+          cards[i].style.display = '';
+        } else {
+          if (catVal.indexOf(category) > -1) {
+            cards[i].style.display = '';
+          } else {
+            cards[i].style.display = 'none';
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>

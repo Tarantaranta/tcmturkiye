@@ -6,4 +6,3 @@ __pycache__/
 .env
 *.log
 .pubmed_raw.xml
-output/

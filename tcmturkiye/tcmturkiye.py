@@ -16,7 +16,7 @@ import sys
 from dotenv import load_dotenv
 load_dotenv()
 from typing import List, Dict
-
+from tcmturkiye.generate_homepage import generate_homepage_html
 # PubMed XML ayrıştırma
 from tcmturkiye.pubmed_parser import parse_pubmed_xml
 # GPT tabanlı içerik fonksiyonları
@@ -88,6 +88,7 @@ def get_pubmed_articles_single(query: str, retstart: int = 0) -> str:
 if __name__ == "__main__":
     logging.info("🔍 Yeni bir makale aranıyor...")
 
+    generate_homepage_html()
     # Daha önce işlenmiş PMID'leri tutan dosya
     processed_ids_file = "processed_pmids.txt"
     if not os.path.exists(processed_ids_file):

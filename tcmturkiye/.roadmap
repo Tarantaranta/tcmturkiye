@@ -394,3 +394,134 @@ Bu yol haritası, başlangıçtaki “Markdown temelli otomasyon” yapısından
 	20.	Ticari İmkânlar ve Premium Hizmetler
 20.1. Ücretli üyelik modelleri, online kurslar ve sertifika programları planlayın
 20.2. Sponsorlu içerik anlaşmaları ve reklam iş birlikleri geliştirin
+
+
+🔍 1. Akıllı Arama & Filtreleme
+
+✅ Şu an: Basit metin arama
+
+💡 Geliştirme Önerisi:
+	•	lunr.js ile tam metin arama (local search engine)
+	•	Kategoriye göre filtreleme
+	•	Etiketlere göre filtreleme
+	•	Tarihe göre sıralama
+	•	“Son eklenen”, “En çok tıklanan”, “Öne çıkan” sekmeleri
+
+⸻
+
+🧠 2. Makale Öneri Sistemi (Yapay Zeka Destekli)
+
+💡 Geliştirme Önerisi:
+	•	Kullanıcının okuduklarına göre öneri
+	•	Örnek: “Bu makaleyi okuyanlar şunlara da baktı”
+	•	Basit bir Python backend veya GPT-tabanlı embedding sistemiyle yapılabilir.
+
+⸻
+
+🗃️ 3. Etiketleme & Kategorilendirme Sistemi
+
+✅ Şu an: Dosya adı üzerinden kategorileme var
+
+💡 Geliştirme Önerisi:
+	•	Otomatik GPT sınıflandırması
+	•	Makale içinde geçen anahtar kelimelere göre hashtag gibi etiketler
+	•	Etiketlere tıklayınca o etiketle ilgili tüm makaleler listelensin
+
+⸻
+
+🌐 4. Dil Seçimi & İçerik Eşleşmesi
+
+✅ Şu an: TR/EN içerikler ayrı klasörlerde
+
+💡 Geliştirme Önerisi:
+	•	TR-EN makale karşılaştırması (aynı PMID)
+	•	“Bu makalenin İngilizce versiyonunu görüntüle” butonu
+	•	Dil seçimi kullanıcı tercihine göre localStorage’da saklanabilir
+
+⸻
+
+📊 5. İstatistik & Dashboard
+
+💡 Kullanıcı İçin:
+	•	Toplam makale sayısı
+	•	Günlük eklenen makale sayısı
+	•	Kategori dağılımı grafikleri (pie chart)
+
+💡 Yönetici İçin (senin için):
+	•	Hangi makaleler tıklanmış
+	•	Hangi gün ne kadar içerik eklenmiş
+	•	Arama istatistikleri (ne aranmış)
+
+⸻
+
+📦 6. Makale Kartları Daha Zengin Olsun
+
+✅ Şu an: Dosya adı + tarih
+
+💡 Geliştirme Önerisi:
+	•	Başlık + kısa özet (GPT’den gelen)
+	•	Küçük DALL·E görseli
+	•	“Önizle” butonu
+	•	Favorilere ekle ikonları (localStorage ile)
+
+⸻
+
+📅 7. Etkinlik Takvimi & Duyurular
+
+💡 Proje Yol Haritasına Uygun:
+	•	Konferans, seminer, webinar gibi etkinlik duyuruları
+	•	Takvim görünümü (calendar.js veya Google Calendar embed)
+
+⸻
+
+🧾 8. Dinamik Markdown Görüntüleme & Not Alma
+
+💡 Geliştirme Önerisi:
+	•	Viewer sayfasında “not al” bölümü
+	•	Bu notlar localStorage’a veya ileride backend’e kaydedilebilir
+	•	Markdown içindeki başlıkları otomatik içindekiler tablosu olarak gösterme (TOC)
+
+⸻
+
+💬 9. Kullanıcı Geri Bildirim ve Puanlama Sistemi
+
+💡 Geliştirme Önerisi:
+	•	Her makale altında “Bu makale faydalı oldu mu?” butonu
+	•	Yorum ekleyebilme (gelecekte moderasyonlu)
+
+⸻
+
+📥 10. PDF/Markdown Dışa Aktarma ve Paylaşım Butonları
+
+💡 Geliştirme Önerisi:
+	•	Markdown dosyasını PDF olarak indir
+	•	“Bu makaleyi e-posta ile paylaş”
+	•	OpenGraph + sosyal medya butonları (Facebook, X, LinkedIn paylaşımı)
+
+⸻
+
+🧪 11. Vaka Sunumu Alanı (İleride CMS)
+
+💡 Şu an planlanıyor:
+
+💡 Geliştirme Önerisi:
+	•	Uzmanlar için form tabanlı içerik gönderme paneli (başlık, özet, tedavi vs.)
+	•	Yazar adı, tarih, onay durumu
+	•	GPT destekli içerik düzenleme + otomatik Markdown üretimi
+
+⸻
+
+🎓 12. Eğitim & Bilgilendirme Bölümü
+
+💡 Geliştirme Önerisi:
+	•	Akupunktur noktaları, temel TCM kavramları için görsel destekli eğitim içerikleri
+	•	“TCM’ye Yeni Başlayanlar için Kılavuz” tarzı sabit içerikler
+
+⸻
+
+🧩 13. Geliştirici & Gönüllü Katkı Sayfası
+
+💡 Geliştirme Önerisi:
+	•	GitHub bağlantıları
+	•	“Nasıl katkı sağlayabilirim?” sayfası
+	•	CONTRIBUTING.md rehberi (kod, içerik, tasarım vb.)
